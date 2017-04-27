@@ -7,7 +7,6 @@
   },
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
-    "remove-demo": "babel-node tools/removeDemo.js",
     "start-message": "babel-node tools/startMessage.js",
     "prestart": "npm-run-all --parallel start-message",
     "start": "npm-run-all --parallel test:watch open:src lint:watch",
@@ -30,6 +29,7 @@
   "author": "Jonay_Antonio",
   "license": "MIT",
   "dependencies": {
+    "bootstrap": "3.3.6",
     "object-assign": "4.1.0",
     "react": "15.4.1",
     "react-dom": "15.4.1",
