@@ -6,7 +6,7 @@ import Form from '../../src/components/Form';
 describe("<FormPage/>", function () {
 
   it("should contains <Form/>", function () {
-    let wrapper = shallow(<FormPage/>);
+    let wrapper = shallow(<FormPage />);
     expect(wrapper.find("Form").node.type).toBe(Form);
   });
 

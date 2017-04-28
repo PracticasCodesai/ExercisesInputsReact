@@ -5,8 +5,12 @@ import Form from '../../src/components/Form';
 
 
 describe('<Form />',function(){
-
-  let wrapper = shallow(<Form />);
+  let wrapper = shallow( <Form
+    addInput={() =>{}}
+    removeInput={() =>{}}
+    hiddenAdd={false}
+    hiddenRemove={false}
+  />);
 
   it('should constains One <InputEmail /> component', function () {
       expect(wrapper.find("InputEmail").node.type).toBe(InputEmail);

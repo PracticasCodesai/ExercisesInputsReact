@@ -5,14 +5,22 @@ class FormPage extends React.Component {
 
   constructor(props, context){
     super(props, context);
+
+    this.addInput = this.addInput.bind(this);
+    this.removeInput = this.removeInput.bind(this);
   }
+
+  addInput(){}
+  removeInput(){}
 
   render(){
     return (
-      <div>
-        <h1>Form email</h1>
-        <Form/>
-      </div>
+        <Form
+          addInput={this.addInput}
+          removeInput={this.removeInput}
+          hiddenAdd={false}
+          hiddenRemove={false}
+        />
     );
   }
 
