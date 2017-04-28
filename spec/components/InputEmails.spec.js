@@ -23,6 +23,10 @@ describe('<InputEmail /> component', function(){
     expect(input.prop('type')).toEqual(expected);
   });
 
+  it('should constains One <InputEmail /> component', function () {
+    expect(wrapper.find("InputEmail").node.type).toBe(InputEmail);
+  });
+
   it('should contains two buttons', function () {
     const buttons = wrapper.find('button');
 

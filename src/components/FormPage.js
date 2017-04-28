@@ -8,6 +8,10 @@ class FormPage extends React.Component {
 
     this.addInput = this.addInput.bind(this);
     this.removeInput = this.removeInput.bind(this);
+
+    this.hiddenAdd=false;
+    this.hiddenRemove=false;
+
   }
 
   addInput(){}
@@ -18,8 +22,8 @@ class FormPage extends React.Component {
         <Form
           addInput={this.addInput}
           removeInput={this.removeInput}
-          hiddenAdd={false}
-          hiddenRemove={false}
+          hiddenAdd={this.hiddenAdd}
+          hiddenRemove={this.hiddenRemove}
         />
     );
   }
