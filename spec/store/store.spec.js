@@ -14,7 +14,7 @@ describe('Integration test', function () {
     const action = FormAction.loadEmailsSuccess(formEmails);
     store.dispatch(action);
 
-    console.log(store.getState());
+    //console.log(store.getState());
 
     const actual = store.getState().emails[0];
 

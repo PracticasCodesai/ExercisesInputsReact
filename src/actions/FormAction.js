@@ -2,7 +2,7 @@ import emailsApi from '../../src/api/EmailsApi';
 import * as type from './actionTypes';
 
 export function loadEmailsSuccess(emails) {
-  return {type: type.LOAD_EMAILS_SUCCESS, emails}
+  return {type: type.LOAD_EMAILS_SUCCESS, emails};
 }
 
 export function loadEmails() {
@@ -16,5 +16,5 @@ export function loadEmails() {
       console.log("xxxxxxxxxxxxxxxxx");
       throw (error);
     });
-  }
+  };
 }

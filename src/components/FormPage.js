@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import Form from './Form';
 import {bindActionCreators} from 'redux';
-import FormActions from '../actions/FormActions';
+import FormActions from '../actions/FormAction';
 
 export class FormPage extends React.Component {
 
