@@ -19,5 +19,17 @@ describe("<FormPage/>", function () {
     expect(allInputs.length).toEqual(1);
   });
 
+  xit("should contains only addInput button when start", function () {
+
+    let props = {
+      emails: {}
+    };
+
+    let wrapper = mount(<FormPage {...props}/>);
+    let allButtons = wrapper.find("button");
+    expect(allButtons.length).toEqual(1);
+
+  });
+
 
 });

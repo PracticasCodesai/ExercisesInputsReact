@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import {browserHistory} from 'react-router';
 import { AppContainer } from 'react-hot-loader';
 import Root from './components/Root';
-
+import {loadEmails} from './actions/FromActions';
 
 import configureStore from './store/configureStore';
 
@@ -14,6 +14,7 @@ import { syncHistoryWithStore } from  'react-router-redux';
 
 
 const store = configureStore();
+store.dispatch(loadEmails());
 
 //Create an enhanced history that syncs navvegation events with the store
 const history = syncHistoryWithStore(browserHistory, store);

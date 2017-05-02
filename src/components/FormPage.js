@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import Form from './Form';
+import {bindActionCreators} from 'redux';
+import FormActions from '../actions/FormActions';
 
-class FormPage extends React.Component {
+export class FormPage extends React.Component {
 
   constructor(props, context){
     super(props, context);
@@ -12,9 +14,14 @@ class FormPage extends React.Component {
     this.hiddenAdd=false;
     this.hiddenRemove=false;
 
+    this.state = {
+      emails: Object.assign({}, this.props.emails)
+    };
+
   }
 
   addInput(){}
+
   removeInput(){}
 
   render(){
@@ -28,6 +35,22 @@ class FormPage extends React.Component {
     );
   }
 
+}
+
+FormPage.propTypes = {
+  emails: PropTypes.array.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+  return {
+    emails: state.emails
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(FormActions, dispatch)
+  };
 }
 
 export default FormPage;

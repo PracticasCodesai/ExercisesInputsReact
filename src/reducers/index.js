@@ -1,9 +1,10 @@
-// Set up your root reducer here...
- import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 import {routerReducer} from 'react-router-redux';
+import FormReducer from './FormReducer';
 
 const rootReducer = combineReducers({
-  routing : routerReducer
+  emails: FormReducer,
+  routing: routerReducer
 });
 
- export default rootReducer;
+export default rootReducer;
