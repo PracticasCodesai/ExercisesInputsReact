@@ -3,7 +3,7 @@ import {routerReducer} from 'react-router-redux';
 import FormReducer from './FormReducer';
 
 const rootReducer = combineReducers({
-  emails: FormReducer,
+   emails: FormReducer,
   routing: routerReducer
 });
 

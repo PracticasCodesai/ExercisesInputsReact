@@ -8,14 +8,8 @@ export class FormPage extends React.Component {
   constructor(props, context){
     super(props, context);
 
-    this.addInput = this.addInput.bind(this);
-    this.removeInput = this.removeInput.bind(this);
-
-    this.hiddenAdd=false;
-    this.hiddenRemove=false;
-
     this.state = {
-      emails: Object.assign({}, this.props.emails)
+      emails: Object.assign([], this.props.emails)
     };
 
   }
@@ -26,12 +20,7 @@ export class FormPage extends React.Component {
 
   render(){
     return (
-        <Form
-          addInput={this.addInput}
-          removeInput={this.removeInput}
-          hiddenAdd={this.hiddenAdd}
-          hiddenRemove={this.hiddenRemove}
-        />
+        <Form emails={this.state.emails} />
     );
   }
 

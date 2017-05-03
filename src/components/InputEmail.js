@@ -12,13 +12,12 @@ class InputEmail extends React.Component {
 
         <button
           className="btn"
-          onClick={this.props.addInput}
-          hidden={this.props.hiddenAdd}>+</button>
+          onClick={this.props.addInput}>+</button>
 
         <button
-          className="btn"
-          onClick={this.props.removeInput}
-          hidden={this.props.hiddenRemove}>-</button>
+          className={this.props.hiddenRemove ? "btn" : "btn hidden"}
+          onClick={this.props.removeInput}>-</button>
+
       </div>
     );
   }

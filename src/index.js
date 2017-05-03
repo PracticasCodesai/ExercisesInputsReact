@@ -14,7 +14,7 @@ import { syncHistoryWithStore } from  'react-router-redux';
 
 
 const store = configureStore();
-store.dispatch(loadEmails());
+//store.dispatch(loadEmails());
 
 //Create an enhanced history that syncs navvegation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
