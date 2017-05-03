@@ -9,8 +9,8 @@ class Form extends React.Component {
     this.addInput = this.addInput.bind(this);
     this.removeInput = this.removeInput.bind(this);
 
-    this.hiddenAdd=true;
-    this.hiddenRemove=false;
+    this.hiddenAdd = false;
+    this.hiddenRemove = this.props.emails.length === 0;
 
     this.state = {
       emails: Object.assign([], this.props.emails)

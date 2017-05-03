@@ -25,9 +25,22 @@ describe('<Form />',function(){
     expect(input.length).toEqual(1);
   });
 
-  it("should contains only addInput button when start", function () {
+  it("should contains only addInput button when start without emails", function () {
     let allButtons = wrapper.find("button");
     expect(allButtons.find('.hidden').length).toEqual(1);
   });
+
+
+  it("should contains addInput and removeInput button when start with 1 email", function () {
+    let props = {
+      emails: ["prueba@gmail.com"]
+    };
+
+     let wrapper = mount(<Form {...props}/>);
+
+    let allButtons = wrapper.find("button");
+    expect(allButtons.find('.hidden').length).toEqual(0);
+  });
+
 
 });
