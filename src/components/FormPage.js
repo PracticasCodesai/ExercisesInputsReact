@@ -1,7 +1,9 @@
 import React, {PropTypes} from 'react';
-import Form from './Form';
+import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import FormActions from '../actions/FormAction';
+import * as FormAction from '../actions/FormAction';
+
+import Form from './Form';
 
 export class FormPage extends React.Component {
 
@@ -11,12 +13,13 @@ export class FormPage extends React.Component {
     this.state = {
       emails: Object.assign([], this.props.emails)
     };
-
   }
 
-  addInput(){}
 
-  removeInput(){}
+  componentWillReceiveProps(nextProps){
+      this.setState({emails: Object.assign([], nextProps.emails)});
+  }
+
 
   render(){
     return (
@@ -33,13 +36,13 @@ FormPage.propTypes = {
 function mapStateToProps(state, ownProps) {
   return {
     emails: state.emails
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(FormActions, dispatch)
+    actions: bindActionCreators(FormAction, dispatch)
   };
 }
 
-export default FormPage;
+export default connect(mapStateToProps,mapDispatchToProps)(FormPage);

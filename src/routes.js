@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route /*, IndexRoute */} from 'react-router';
 
-import FormPage from './components/FormPage';
+import FormPageConnect from './components/FormPage';
 
 /*eslint-disable */
 export default(
-  <Route path='/' components={FormPage} />
+  <Route path='/' components={FormPageConnect} />
 );

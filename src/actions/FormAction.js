@@ -7,13 +7,9 @@ export function loadEmailsSuccess(emails) {
 
 export function loadEmails() {
   return function (dispatch) {
-  //  dispatch(loadEmailsSuccess({emails: ['prueba@gmail.com1']}));
-
     return emailsApi.loadAllEmails().then(emails => {
-      console.log("xxxxxxxxxxxxxxxxx");
       dispatch(loadEmailsSuccess(emails));
     }).catch(error => {
-      console.log("xxxxxxxxxxxxxxxxx");
       throw (error);
     });
   };

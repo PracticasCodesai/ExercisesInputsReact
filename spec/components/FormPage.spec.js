@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import FormPage from '../../src/components/FormPage';
+import {FormPage} from '../../src/components/FormPage';
 import Form from '../../src/components/Form';
 import InputEmail from '../../src/components/InputEmail';
 

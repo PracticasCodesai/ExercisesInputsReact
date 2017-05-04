@@ -42,5 +42,18 @@ describe('<Form />',function(){
     expect(allButtons.find('.hidden').length).toEqual(0);
   });
 
+  it('should contains email when emails contains 1', function () {
+    let email = "prueba@gmail.com";
+
+    let props = {
+      emails: [email]
+    };
+
+    let wrapper = mount(<Form {...props}/>);
+
+    let input = wrapper.find("input").find({value: email});
+    expect(input.length).toEqual(1);
+  });
+
 
 });
