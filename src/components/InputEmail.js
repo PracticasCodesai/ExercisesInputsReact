@@ -1,25 +1,24 @@
 import React,{PropTypes} from 'react';
 
 class InputEmail extends React.Component {
+
   constructor(props, context) {
     super(props, context);
+
+    this.hiddenButtonRemove = this.props.hiddenRemove;
 
     this.state = {
       email: this.props.email || ""
     };
 
+    this.updateButtonRemove = this.updateButtonRemove.bind(this);
     this.updateEmailState = this.updateEmailState.bind(this);
-  }
-
-  updateEmailState(event){
-    let email = event.target.value;
-    return this.setState({email: email});
   }
 
   componentWillReceiveProps(nextProps){
     this.setState({email: nextProps.email});
+    this.updateButtonRemove(nextProps.email);
   }
-
 
   render(){
     return(
@@ -36,11 +35,23 @@ class InputEmail extends React.Component {
           onClick={this.props.addInput}>+</button>
 
         <button
-          className={this.props.hiddenRemove ? "btn hidden" : "btn"}
+          className={this.hiddenButtonRemove ? "btn hidden" : "btn"}
           onClick={this.props.removeInput}>-</button>
 
       </div>
     );
+  }
+
+
+  updateButtonRemove(email){
+    this.hiddenButtonRemove = email === "";
+  }
+
+
+  updateEmailState(event){
+    let email = event.target.value;
+    this.updateButtonRemove(email);
+    return this.setState({email: email});
   }
 }
 

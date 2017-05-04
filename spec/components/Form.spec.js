@@ -42,6 +42,21 @@ describe('<Form />',function(){
     expect(allButtons.find('.hidden').length).toEqual(0);
   });
 
+  it("should contains addInput and removeInput button when start with 0 email and add 1 email", function () {
+    let props = {
+      emails: []
+    };
+
+     let wrapper = mount(<Form {...props}/>);
+
+    let input = wrapper.find('input').find({type: 'email'});
+    input.simulate('change', { target: { value: "a"} });
+
+    let allButtons = wrapper.find("button");
+
+    expect(allButtons.find('.hidden').length).toEqual(0);
+  });
+
   it('should contains email when emails contains 1', function () {
     let email = "prueba@gmail.com";
 
@@ -54,6 +69,19 @@ describe('<Form />',function(){
     let input = wrapper.find("input").find({value: email});
     expect(input.length).toEqual(1);
   });
+
+/*
+ simulateKeyPresses(characters, ...args) {
+ for(let i = 0; i < characters.length; i++) {
+ this.simulate('keyPress', extend({
+ which: characters.charCodeAt(i),
+ key: characters[i],
+ keyCode: characters.charCodeAt(i)
+ }, args));
+ }
+ }
+ */
+
 
 
 });
