@@ -3,7 +3,7 @@ import InputEmail from './InputEmail';
 
 class Form extends React.Component {
 
-  constructor(props, context){
+  constructor(props, context) {
     super(props, context);
 
     this.addInput = this.addInput.bind(this);
@@ -14,24 +14,35 @@ class Form extends React.Component {
 
     this.addInput = this.addInput.bind(this);
     this.removeInput = this.removeInput.bind(this);
+    this._createInputEmailRow = this._createInputEmailRow.bind(this);
   }
 
-  addInput(){}
+  addInput() {
+  }
 
-  removeInput(){}
+  removeInput() {
+  }
+
+  _createInputEmailRow(){
+    let emails = this.props.emails;
+    if(emails.length === 0){emails = [""];}
+    return emails.map(email =>
+      <InputEmail
+        key={email}
+        addInput={this.addInput}
+        removeInput={this.removeInput}
+        hiddenAdd={this.hiddenAdd}
+        hiddenRemove={this.hiddenRemove}
+        email={email}/>
+    );
+  }
 
   render(){
     return (
       <div className="container">
         <h1>Form email</h1>
         <form>
-          <InputEmail
-            addInput={this.addInput}
-            removeInput={this.removeInput}
-            hiddenAdd={this.hiddenAdd}
-            hiddenRemove={this.hiddenRemove}
-            email={this.props.emails[0]}
-            />
+          {this._createInputEmailRow()}
           <input
             type="submit"
           />

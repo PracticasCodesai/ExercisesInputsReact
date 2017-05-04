@@ -70,18 +70,18 @@ describe('<Form />',function(){
     expect(input.length).toEqual(1);
   });
 
-/*
- simulateKeyPresses(characters, ...args) {
- for(let i = 0; i < characters.length; i++) {
- this.simulate('keyPress', extend({
- which: characters.charCodeAt(i),
- key: characters[i],
- keyCode: characters.charCodeAt(i)
- }, args));
- }
- }
- */
+  it('should contains 2 inputs when have 2 emails', function () {
 
+    let props = {
+      emails: ["prueba@gmail.com", "prueba2@gmail.com"]
+    };
 
+    let wrapper = mount(<Form {...props}/>);
+
+    let input = wrapper.find("input").find({type: "email"});
+
+    expect(input.length).toEqual(2);
+
+  });
 
 });
