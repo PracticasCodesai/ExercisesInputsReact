@@ -84,4 +84,22 @@ describe('<Form />',function(){
 
   });
 
+  it("should contains 2 remove buttons when have 2 inputs though inputs are empty", function () {
+
+    let props = {
+      emails: ["prueba@gmail.com", "prueba2@gmail.com"]
+    };
+
+    let wrapper = mount(<Form {...props}/>);
+
+    let input = wrapper.find('input').find({type: "email"}).last();
+
+    input.simulate('change', { target: { value: ""} });
+
+
+    let buttons = wrapper.find("button").find(".hidden");
+    expect(buttons.length).toEqual(0);
+
+  });
+
 });

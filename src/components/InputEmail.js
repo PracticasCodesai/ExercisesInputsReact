@@ -5,7 +5,7 @@ class InputEmail extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.hiddenButtonRemove = this.props.hiddenRemove;
+    this.updateButtonRemove(this.props.email || "");
 
     this.state = {
       email: this.props.email || ""
@@ -29,7 +29,6 @@ class InputEmail extends React.Component {
           value={this.state.email}
           onChange={this.updateEmailState}
           />
-
         <button
           className="btn"
           onClick={this.props.addInput}>+</button>
@@ -37,14 +36,15 @@ class InputEmail extends React.Component {
         <button
           className={this.hiddenButtonRemove ? "btn hidden" : "btn"}
           onClick={this.props.removeInput}>-</button>
-
       </div>
     );
   }
 
 
   updateButtonRemove(email){
-    this.hiddenButtonRemove = email === "";
+    if(this.props.oneInput) {
+      this.hiddenButtonRemove = email === "";
+    }
   }
 
 
@@ -59,7 +59,7 @@ InputEmail.propTypes = {
   addInput: PropTypes.func.isRequired,
   removeInput: PropTypes.func.isRequired,
   hiddenAdd: PropTypes.bool.isRequired,
-  hiddenRemove: PropTypes.bool.isRequired,
+  oneInput: PropTypes.bool.isRequired,
   email: PropTypes.string
 };
 

@@ -14,7 +14,6 @@ class Form extends React.Component {
 
     this.addInput = this.addInput.bind(this);
     this.removeInput = this.removeInput.bind(this);
-    this._createInputEmailRow = this._createInputEmailRow.bind(this);
   }
 
   addInput() {
@@ -26,13 +25,15 @@ class Form extends React.Component {
   _createInputEmailRow(){
     let emails = this.props.emails;
     if(emails.length === 0){emails = [""];}
+
+    let i = 0;
     return emails.map(email =>
       <InputEmail
-        key={email}
+        key={i++}
         addInput={this.addInput}
         removeInput={this.removeInput}
         hiddenAdd={this.hiddenAdd}
-        hiddenRemove={this.hiddenRemove}
+        oneInput={emails.length === 1}
         email={email}/>
     );
   }

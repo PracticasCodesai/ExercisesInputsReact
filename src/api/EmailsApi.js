@@ -1,6 +1,6 @@
 import delay from './delay';
 
-const emails = ["prueba@gmail.com"];
+const emails = ["prueba@gmail.com","jonay@gmail.com"];
 
 class EmailsApi {
 
