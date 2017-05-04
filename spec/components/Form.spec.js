@@ -97,8 +97,27 @@ describe('<Form />',function(){
     input.simulate('change', { target: { value: ""} });
 
 
-    let buttons = wrapper.find("button").find(".hidden");
-    expect(buttons.length).toEqual(0);
+    let buttonHidden = wrapper.find("button").find(".hidden");
+    expect(buttonHidden.length).toEqual(0);
+
+  });
+
+  it("should remove value when remove button are clicked with only 1 email", function () {
+
+    let props = {
+      emails: ["prueba@gmail.com"]
+    };
+
+    let wrapper = mount(<Form {...props}/>);
+
+    let button = wrapper.find('button').last();
+    button.simulate('click');
+
+    let input = wrapper.find('input').find({type: 'email'});
+    expect(input.node.value).toEqual("");
+
+    let buttonHidden = wrapper.find("button").find(".hidden");
+    expect(buttonHidden.length).toEqual(0);
 
   });
 

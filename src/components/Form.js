@@ -6,20 +6,9 @@ class Form extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.addInput = this.addInput.bind(this);
-    this.removeInput = this.removeInput.bind(this);
-
     this.hiddenAdd = false;
     this.hiddenRemove = this.props.emails.length === 0;
 
-    this.addInput = this.addInput.bind(this);
-    this.removeInput = this.removeInput.bind(this);
-  }
-
-  addInput() {
-  }
-
-  removeInput() {
   }
 
   _createInputEmailRow(){
@@ -30,8 +19,6 @@ class Form extends React.Component {
     return emails.map(email =>
       <InputEmail
         key={i++}
-        addInput={this.addInput}
-        removeInput={this.removeInput}
         hiddenAdd={this.hiddenAdd}
         oneInput={emails.length === 1}
         email={email}/>
