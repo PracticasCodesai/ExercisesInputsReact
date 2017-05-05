@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 
 
-const InputEmail = ({position ,email, addInput, removeInput, updateEmailState, hiddenButtonRemove}) => {
+const InputEmail = ({position ,email, addInput, removeInput, updateEmailState, hiddenButtonAdd, hiddenButtonRemove}) => {
   return (<div>
     <input
       className="form-control"
@@ -10,7 +10,7 @@ const InputEmail = ({position ,email, addInput, removeInput, updateEmailState, h
       onChange={updateEmailState(position)}
     />
     <input type="button"
-      className="btn"
+      className={hiddenButtonAdd ? "btn hidden" : "btn"}
       onClick={addInput}  value="+"/>
 
     <input type="button"
@@ -26,6 +26,7 @@ InputEmail.propTypes = {
   removeInput: PropTypes.func.isRequired,
   updateEmailState: PropTypes.func.isRequired,
   hiddenButtonRemove: PropTypes.bool.isRequired,
+  hiddenButtonAdd: PropTypes.bool.isRequired,
 };
 
 export default InputEmail;

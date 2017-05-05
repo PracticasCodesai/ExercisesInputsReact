@@ -27,6 +27,7 @@ class ManagerInputEmail extends React.Component {
         updateEmailState={this.props.updateEmailState}
         updateButtonState={this.updateButtonRemove}
         hiddenButtonRemove={this.hiddenButtonRemove}
+        hiddenButtonAdd={this.props.position === 4}
       />
     );
   }
@@ -38,6 +39,8 @@ class ManagerInputEmail extends React.Component {
       this.hiddenButtonRemove = false;
     }
   }
+
+
 
   addInput() {
     this.props.addManagerInputs();

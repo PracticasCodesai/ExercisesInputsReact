@@ -245,4 +245,19 @@ describe('<ManagerInputEmail />',function(){
     expect(inputs.length).toEqual(2);
   });
 
+  it("should not add a <InputEmail/> when 'add button' are clicked with 5 email", function () {
+    let props = {
+      emails: [
+        "1@gmail.com",
+        "2@gmail.com",
+        "3@gmail.com",
+        "4@gmail.com",
+        "5@gmail.com",]
+    };
+    let wrapper = mount(<Form {...props}/>);
+
+    let buttonsHidden = wrapper.find("input").find({type : "button"}).find(".hidden");
+    expect(buttonsHidden.length).toEqual(1);
+  });
+
 });
