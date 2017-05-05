@@ -1,6 +1,5 @@
 import React from 'react';
-
-import Form from './Form';
+import FormConnect from './Form';
 
 class FormPage extends React.Component {
 
@@ -10,7 +9,7 @@ class FormPage extends React.Component {
 
   render(){
     return (
-        <Form/>
+        <FormConnect/>
     );
   }
 }

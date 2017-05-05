@@ -21,6 +21,11 @@ export class Form extends React.Component {
     this.updateEmailState = this.updateEmailState.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+    this.setState({emails: Object.assign([], nextProps.emails)});
+  }
+
+
   _createInputEmailRow(){
     let emails = this.state.emails;
     if(emails.length === 0){emails = [""];}
@@ -74,11 +79,6 @@ export class Form extends React.Component {
 
   _resetManagerInputs(newEmails){
     this.setState({emails: newEmails});
-  }
-
-
-  componentWillReceiveProps(nextProps){
-    this.setState({emails: Object.assign([], nextProps.emails)});
   }
 
   render(){

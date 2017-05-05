@@ -10,6 +10,14 @@ class ManagerInputEmail extends React.Component {
     this.updateEmail = this.updateEmail.bind(this);
   }
 
+  removeInput() {
+    this.props.deleteManagerInputs(this.props.position);
+  }
+
+  updateEmail(){
+    return this.props.updateEmailState(this.props.position);
+  }
+
   render(){
     const LIMIT_MAX_EMAILS = 5;
     return(
@@ -23,20 +31,12 @@ class ManagerInputEmail extends React.Component {
       />
     );
   }
-
-  removeInput() {
-      this.props.deleteManagerInputs(this.props.position);
-  }
-
-  updateEmail(){
-     return this.props.updateEmailState(this.props.position);
-  }
-
 }
 
 ManagerInputEmail.propTypes = {
   position: PropTypes.number.isRequired,
   deleteManagerInputs: PropTypes.func.isRequired,
+  updateEmailState: PropTypes.func.isRequired,
   addManagerInputs: PropTypes.func.isRequired,
   oneInput: PropTypes.bool.isRequired,
   email: PropTypes.string
