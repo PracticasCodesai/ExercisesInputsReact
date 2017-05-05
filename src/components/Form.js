@@ -40,7 +40,7 @@ export class Form extends React.Component {
   deleteEmail(email){
     let newEmails = Object.assign([], this.state.emails);
     newEmails.splice(newEmails.indexOf(email),1);
-
+    console.log(newEmails);
     this._resetManagerInputs(newEmails);
   }
 

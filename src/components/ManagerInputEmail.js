@@ -48,12 +48,7 @@ class ManagerInputEmail extends React.Component {
   }
 
   removeInput() {
-    if(this.props.oneInput){
-      this.setState({email: ""});
-      this._updateButtonRemove("");
-    }else{
       this.props.deleteManagerInputs(this.state.email);
-    }
   }
 
   updateEmailState(event){

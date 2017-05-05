@@ -153,9 +153,9 @@ describe('<ManagerInputEmail />',function(){
     let button = wrapper.find('input').find({type: 'button'}).first();
     button.simulate('click');
 
-    let input = wrapper.find(InputEmail);
+    let inputEmail = wrapper.find(InputEmail);
 
-    expect(input.length).toEqual(5);
+    expect(inputEmail.length).toEqual(5);
   });
 
   it("should contains only addRemove when click 'remove button' give 1 email", function () {
@@ -167,6 +167,28 @@ describe('<ManagerInputEmail />',function(){
 
     let buttonsHidden = wrapper.find('input').find({type: 'button'}).find(".hidden");
     expect(buttonsHidden.length).toEqual(1);
+  });
+
+  it("should remove all <InputEmail /> and after add only two empty", function () {
+    let props = {
+      emails: [
+        "1@gmail.com",
+        "2@gmail.com",
+        "3@gmail.com",
+        "4@gmail.com",
+        "5@gmail.com"]
+    };
+    let wrapper = mount(<Form {...props}/>);
+
+    for(let i = 0; i < props.emails.length; i++){
+      let buttonRemove = wrapper.find('input').find({type: 'button'}).last();
+      buttonRemove.simulate('click');
+    }
+    let buttonAdd = wrapper.find('input').find({type: 'button'}).first();
+    buttonAdd.simulate("click");
+
+    let inputEmail = wrapper.find(InputEmail);
+    expect(inputEmail.length).toEqual(2);
   });
 
 });
