@@ -31,17 +31,17 @@ describe('<ManagerInputEmail />',function(){
   });
 
 
-  it("should contains addInput and removeInput button when start with 1 email", function () {
+  it("should contains 'add button' and 'remove button' when start with 1 email", function () {
     let props = {
       emails: ["prueba@gmail.com"]
     };
     let wrapper = mount(<Form {...props}/>);
 
-    let allButtons = wrapper.find("button");
+    let allButtons = wrapper.find('input').find({type: 'button'});
     expect(allButtons.find('.hidden').length).toEqual(0);
   });
 
-  it("should contains addInput button when start with 0 email and add 1 email them add button remove", function () {
+  it("should contains 'add button' when start with 0 email and add 1 email them add 'button remove'", function () {
     let props = {
       emails: []
     };
@@ -50,7 +50,7 @@ describe('<ManagerInputEmail />',function(){
 
     input.simulate('change', { target: { value: "a"} });
 
-    let allButtons = wrapper.find("button");
+    let allButtons = wrapper.find('input').find({type: 'button'});
     expect(allButtons.find('.hidden').length).toEqual(0);
   });
 
@@ -77,7 +77,7 @@ describe('<ManagerInputEmail />',function(){
     expect(input.length).toEqual(2);
   });
 
-  it("should contains 2 remove buttons when have 2 inputs though inputs are empty", function () {
+  it("should contains 2 'remove buttons' when have 2 inputs though inputs are empty", function () {
     let props = {
       emails: ["prueba@gmail.com", "prueba2@gmail.com"]
     };
@@ -92,7 +92,7 @@ describe('<ManagerInputEmail />',function(){
     expect(buttonHidden.length).toEqual(0);
   });
 
-  it("should remove value when remove button are clicked with only 1 email", function () {
+  it("should remove value when 'remove button' are clicked with only 1 email", function () {
 
     let props = {
       emails: ["prueba@gmail.com"]
@@ -100,17 +100,17 @@ describe('<ManagerInputEmail />',function(){
 
     let wrapper = mount(<Form {...props}/>);
 
-    let button =wrapper.find('input').find({type: 'button'}).last();
+    let button = wrapper.find('input').find({type: 'button'}).last();
     button.simulate('click');
 
     let input = wrapper.find('input').find({type: 'email'});
     expect(input.node.value).toEqual("");
 
     let buttonHidden = wrapper.find('input').find({type: 'button'}).find(".hidden");
-    expect(buttonHidden.length).toEqual(0);
+    expect(buttonHidden.length).toEqual(1);
   });
 
-  it("should remove a <InputEmail/> when remove button are clicked with 2 emails or more", function () {
+  it("should remove a <InputEmail/> when 'remove button' are clicked with 2 emails or more", function () {
     let props = {
       emails: ["prueba@gmail.com", "prueba2@gmail.com", "prueba2@gmail.com"]
     };
@@ -125,7 +125,7 @@ describe('<ManagerInputEmail />',function(){
     expect(input.last().node.value).toEqual(props.emails[1]);
   });
 
-  it("should add a <InputEmail/> when add button are clicked with 0 email", function () {
+  it("should add a <InputEmail/> when 'add button' are clicked with 0 email", function () {
     let props = {
       emails: []
     };
@@ -139,7 +139,7 @@ describe('<ManagerInputEmail />',function(){
     expect(input.length).toEqual(2);
   });
 
-  it("should not add a <InputEmail/> when add button are clicked with 5 email", function () {
+  it("should not add a <InputEmail/> when 'add button' are clicked with 5 email", function () {
     let props = {
       emails: [
         "1@gmail.com",
@@ -156,6 +156,17 @@ describe('<ManagerInputEmail />',function(){
     let input = wrapper.find(InputEmail);
 
     expect(input.length).toEqual(5);
+  });
+
+  it("should contains only addRemove when click 'remove button' give 1 email", function () {
+    let props = {emails: ["1@gmail.com"]};
+    let wrapper = mount(<Form {...props}/>);
+
+    let button = wrapper.find('input').find({type: 'button'}).last();
+    button.simulate('click');
+
+    let buttonsHidden = wrapper.find('input').find({type: 'button'}).find(".hidden");
+    expect(buttonsHidden.length).toEqual(1);
   });
 
 });
