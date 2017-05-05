@@ -10,7 +10,6 @@ export class Form extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.hiddenAdd = false;
     this.hiddenRemove = this.props.emails.length === 0;
 
     this.state = {
@@ -32,7 +31,6 @@ export class Form extends React.Component {
       <ManagerInputEmail
         key={id++}
         position={i++}
-        hiddenAdd={this.hiddenAdd}
         deleteManagerInputs={this.deleteEmail}
         addManagerInputs={this.addEmail}
         updateEmailState={this.updateEmailState}
