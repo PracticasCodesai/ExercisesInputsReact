@@ -50,7 +50,7 @@ class ManagerInputEmail extends React.Component {
     if(this.props.oneInput){
       this.setState({email: ""});
     }else{
-      this.props.resetManagerInputs();
+      this.props.resetManagerInputs(this.state.email);
     }
   }
 

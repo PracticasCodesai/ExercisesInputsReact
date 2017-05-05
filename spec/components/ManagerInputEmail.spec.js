@@ -112,7 +112,7 @@ describe('<ManagerInputEmail />',function(){
 
   it("should remove a <InputEmail/> when remove button are clicked with 2 emails or more", function () {
     let props = {
-      emails: ["prueba@gmail.com", "prueba2@gmail.com"]
+      emails: ["prueba@gmail.com", "prueba2@gmail.com", "prueba2@gmail.com"]
     };
     let wrapper = mount(<Form {...props}/>);
 
@@ -121,8 +121,9 @@ describe('<ManagerInputEmail />',function(){
 
     let input = wrapper.find("input").find({type: "email"});
 
-    expect(input.length).toEqual(1);
-    expect(input.node.value).toEqual(props.emails[0]);
+    expect(input.length).toEqual(2);
+    expect(input.last().node.value).toEqual(props.emails[1]);
   });
+
 
 });

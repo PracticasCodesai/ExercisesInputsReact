@@ -35,9 +35,11 @@ export class Form extends React.Component {
     );
   }
 
-  resetManagerInputs(){
+
+
+  resetManagerInputs(email){
     let newEmails = Object.assign([], this.state.emails);
-    newEmails = newEmails.slice(newEmails, 1);
+    newEmails.splice(newEmails.indexOf(email),1);
     this.setState({emails: newEmails});
   }
 
