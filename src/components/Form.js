@@ -67,7 +67,8 @@ export class Form extends React.Component {
     let newEmails = Object.assign([], this.state.emails);
     newEmails.splice(position,1, email);
 
-    this.setState({emails: newEmails});}
+    this._resetManagerInputs(newEmails);
+    };
   }
 
 

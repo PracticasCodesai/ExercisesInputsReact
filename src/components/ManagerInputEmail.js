@@ -6,31 +6,32 @@ class ManagerInputEmail extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.addInput = this.addInput.bind(this);
     this.removeInput = this.removeInput.bind(this);
+    this.updateEmail = this.updateEmail.bind(this);
   }
 
   render(){
+    const LIMIT_MAX_EMAILS = 5;
     return(
       <InputEmail
-        position = {this.props.position}
         email={this.props.email}
-        addInput={this.addInput}
+        addInput={this.props.addManagerInputs}
         removeInput={this.removeInput}
-        updateEmailState={this.props.updateEmailState}
+        updateEmail={this.updateEmail()}
         hiddenButtonRemove={this.props.email === "" && this.props.oneInput}
-        hiddenButtonAdd={this.props.position === 4}
+        hiddenButtonAdd={this.props.position === LIMIT_MAX_EMAILS-1}
       />
     );
-  }
-
-  addInput() {
-    this.props.addManagerInputs();
   }
 
   removeInput() {
       this.props.deleteManagerInputs(this.props.position);
   }
+
+  updateEmail(){
+     return this.props.updateEmailState(this.props.position);
+  }
+
 }
 
 ManagerInputEmail.propTypes = {
