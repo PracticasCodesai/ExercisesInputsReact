@@ -6,7 +6,7 @@ class ManagerInputEmail extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this._updateButtonRemove(this.props.email || "");
+    this._updateButtonRemove(this.props.email || "",this.props.oneInput);
 
     this.state = {
       email: this.props.email || ""
@@ -20,7 +20,7 @@ class ManagerInputEmail extends React.Component {
 
   componentWillReceiveProps(nextProps){
     this.setState({email: nextProps.email});
-    this._updateButtonRemove(nextProps.email);
+    this._updateButtonRemove(nextProps.email,nextProps.oneInput);
   }
 
   render(){
@@ -35,8 +35,8 @@ class ManagerInputEmail extends React.Component {
     );
   }
 
-  _updateButtonRemove(email){
-    if(this.props.oneInput) {
+  _updateButtonRemove(email, oneInput){
+    if(oneInput) {
       this.hiddenButtonRemove = email === "";
     }else{
       this.hiddenButtonRemove = false;

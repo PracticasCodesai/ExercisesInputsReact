@@ -191,4 +191,15 @@ describe('<ManagerInputEmail />',function(){
     expect(inputEmail.length).toEqual(2);
   });
 
+  it("should contain 'remove button' when start email empty and click 'add button'", function () {
+    let props = {emails: []};
+    let wrapper = mount(<Form {...props}/>);
+
+    let buttonAdd = wrapper.find('input').find({type: 'button'}).first();
+    buttonAdd.simulate('click');
+
+    let buttonsHidden = wrapper.find("input").find({type: 'button'}).find('.hidden');
+    expect(buttonsHidden.length).toEqual(0);
+  });
+
 });
