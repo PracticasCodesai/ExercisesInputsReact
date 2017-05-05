@@ -6,36 +6,31 @@ class ManagerInputEmail extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this._updateButtonRemove(this.props.email || "",this.props.oneInput);
+    this.updateButtonRemove(this.props.email || "",this.props.oneInput);
 
-    this.state = {
-      email: this.props.email || ""
-    };
-
-    this._updateButtonRemove = this._updateButtonRemove.bind(this);
-    this.updateEmailState = this.updateEmailState.bind(this);
+    this.updateButtonRemove = this.updateButtonRemove.bind(this);
     this.addInput = this.addInput.bind(this);
     this.removeInput = this.removeInput.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
-    this.setState({email: nextProps.email});
-    this._updateButtonRemove(nextProps.email,nextProps.oneInput);
+    this.updateButtonRemove(nextProps.email,nextProps.oneInput);
   }
 
   render(){
     return(
       <InputEmail
-        email={this.state.email}
+        email={this.props.email}
         addInput={this.addInput}
         removeInput={this.removeInput}
-        updateEmailState={this.updateEmailState}
+        updateEmailState={this.props.updateEmailState}
+        updateButtonState={this.updateButtonRemove}
         hiddenButtonRemove={this.hiddenButtonRemove}
       />
     );
   }
 
-  _updateButtonRemove(email, oneInput){
+  updateButtonRemove(email, oneInput){
     if(oneInput) {
       this.hiddenButtonRemove = email === "";
     }else{
@@ -48,13 +43,7 @@ class ManagerInputEmail extends React.Component {
   }
 
   removeInput() {
-      this.props.deleteManagerInputs(this.state.email);
-  }
-
-  updateEmailState(event){
-    let email = event.target.value;
-    this._updateButtonRemove(email);
-    return this.setState({email: email});
+      this.props.deleteManagerInputs(this.props.email);
   }
 }
 

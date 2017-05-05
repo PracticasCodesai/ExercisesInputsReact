@@ -7,7 +7,7 @@ const InputEmail = ({email, addInput, removeInput, updateEmailState, hiddenButto
       className="form-control"
       type="email"
       value={email}
-      onChange={updateEmailState}
+      onChange={updateEmailState(email)}
     />
     <input type="button"
       className="btn"

@@ -19,6 +19,7 @@ export class Form extends React.Component {
 
     this.deleteEmail = this.deleteEmail.bind(this);
     this.addEmail = this.addEmail.bind(this);
+    this.updateEmailState = this.updateEmailState.bind(this);
   }
 
   _createInputEmailRow(){
@@ -32,6 +33,7 @@ export class Form extends React.Component {
         hiddenAdd={this.hiddenAdd}
         deleteManagerInputs={this.deleteEmail}
         addManagerInputs={this.addEmail}
+        updateEmailState={this.updateEmailState}
         oneInput={emails.length === 1}
         email={email}/>
     );
@@ -57,6 +59,17 @@ export class Form extends React.Component {
       this._resetManagerInputs(newEmails);
     }
   }
+
+  updateEmailState(emailOld){
+    return (event) => {
+    let email = event.target.value;
+
+    let newEmails = Object.assign([], this.state.emails);
+    newEmails.splice(newEmails.indexOf(emailOld),1, email);
+
+    this.setState({emails: newEmails});}
+  }
+
 
   _resetManagerInputs(newEmails){
     this.setState({emails: newEmails});

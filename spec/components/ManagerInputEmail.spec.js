@@ -202,4 +202,20 @@ describe('<ManagerInputEmail />',function(){
     expect(buttonsHidden.length).toEqual(0);
   });
 
+  it("should not reset value thought change value and click 'add button'", function () {
+    let props = {emails: ["prueba@gmail.com"]};
+    let wrapper = mount(<Form {...props}/>);
+
+    let input = wrapper.find('input').find({type: 'email'});
+
+    let newText = "jonay@gmail.com";
+    input.simulate('change', { target: { value: newText} });
+
+    let buttonAdd = wrapper.find('input').find({type: 'button'}).first();
+    buttonAdd.simulate('click');
+
+    expect(input.node.value).toEqual(newText);
+  });
+
+
 });
