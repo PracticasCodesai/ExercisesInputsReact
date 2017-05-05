@@ -126,7 +126,7 @@ describe('<ManagerInputEmail />',function(){
   });
 
   it("should contains only addRemove when click 'remove button' give 1 email", function () {
-    let wrapper = mountPropsEmail("1@gmail.com");
+    let wrapper = mountPropsEmail(["1@gmail.com"]);
 
     let button = wrapper.find('input').find({type: 'button'}).last();
     button.simulate('click');
