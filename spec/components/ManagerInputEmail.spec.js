@@ -218,4 +218,31 @@ describe('<ManagerInputEmail />',function(){
   });
 
 
+  it("not should  have conflict if 2 same values", function () {
+    let email = "prueba@gmail.com";
+    let props = {emails: [email,email]};
+    let wrapper = mount(<Form {...props}/>);
+
+    let inputs = wrapper.find('input').find({type: 'email'});
+
+    let newText = "jonay";
+    inputs.last().simulate('change', { target: { value: email+newText} });
+
+    expect(inputs.first().node.value).toEqual(email);
+    expect(inputs.last().node.value).toEqual(email+newText);
+  });
+
+  it("not should have conflict<InputEmail/> with same value when click in 'remove button'", function () {
+    let email = "prueba@gmail.com";
+    let props = {emails: [email, "", email]};
+    let wrapper = mount(<Form {...props}/>);
+
+    let buttons = wrapper.find('input').find({type: 'button'});
+    buttons.last().simulate('click');
+
+    let inputs = wrapper.find("input").find({type: "email"});
+    expect(inputs.first().node.value).toEqual(email);
+    expect(inputs.length).toEqual(2);
+  });
+
 });

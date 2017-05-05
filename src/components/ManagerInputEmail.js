@@ -20,6 +20,7 @@ class ManagerInputEmail extends React.Component {
   render(){
     return(
       <InputEmail
+        position = {this.props.position}
         email={this.props.email}
         addInput={this.addInput}
         removeInput={this.removeInput}
@@ -43,11 +44,12 @@ class ManagerInputEmail extends React.Component {
   }
 
   removeInput() {
-      this.props.deleteManagerInputs(this.props.email);
+      this.props.deleteManagerInputs(this.props.position);
   }
 }
 
 ManagerInputEmail.propTypes = {
+  position: PropTypes.number.isRequired,
   deleteManagerInputs: PropTypes.func.isRequired,
   addManagerInputs: PropTypes.func.isRequired,
   hiddenAdd: PropTypes.bool.isRequired,

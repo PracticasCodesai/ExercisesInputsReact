@@ -26,10 +26,12 @@ export class Form extends React.Component {
     let emails = this.state.emails;
     if(emails.length === 0){emails = [""];}
 
+    let id = 0;
     let i = 0;
     return emails.map(email =>
       <ManagerInputEmail
-        key={i++}
+        key={id++}
+        position={i++}
         hiddenAdd={this.hiddenAdd}
         deleteManagerInputs={this.deleteEmail}
         addManagerInputs={this.addEmail}
@@ -39,9 +41,9 @@ export class Form extends React.Component {
     );
   }
 
-  deleteEmail(email){
+  deleteEmail(position){
     let newEmails = Object.assign([], this.state.emails);
-    newEmails.splice(newEmails.indexOf(email),1);
+    newEmails.splice(position, 1);
     this._resetManagerInputs(newEmails);
   }
 
@@ -60,12 +62,12 @@ export class Form extends React.Component {
     }
   }
 
-  updateEmailState(emailOld){
+  updateEmailState(position){
     return (event) => {
     let email = event.target.value;
 
     let newEmails = Object.assign([], this.state.emails);
-    newEmails.splice(newEmails.indexOf(emailOld),1, email);
+    newEmails.splice(position,1, email);
 
     this.setState({emails: newEmails});}
   }

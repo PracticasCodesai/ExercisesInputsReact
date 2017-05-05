@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
 
 
-const InputEmail = ({email, addInput, removeInput, updateEmailState, hiddenButtonRemove}) => {
+const InputEmail = ({position ,email, addInput, removeInput, updateEmailState, hiddenButtonRemove}) => {
   return (<div>
     <input
       className="form-control"
       type="email"
       value={email}
-      onChange={updateEmailState(email)}
+      onChange={updateEmailState(position)}
     />
     <input type="button"
       className="btn"
@@ -20,6 +20,7 @@ const InputEmail = ({email, addInput, removeInput, updateEmailState, hiddenButto
   };
 
 InputEmail.propTypes = {
+  position: PropTypes.number.isRequired,
   email: PropTypes.string.isRequired,
   addInput: PropTypes.func.isRequired,
   removeInput: PropTypes.func.isRequired,
