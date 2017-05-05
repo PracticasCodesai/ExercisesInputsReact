@@ -17,7 +17,8 @@ export class Form extends React.Component {
       emails: Object.assign([], this.props.emails)
     };
 
-    this.resetManagerInputs = this.resetManagerInputs.bind(this);
+    this.deleteEmail = this.deleteEmail.bind(this);
+    this.addEmail = this.addEmail.bind(this);
   }
 
   _createInputEmailRow(){
@@ -29,19 +30,37 @@ export class Form extends React.Component {
       <ManagerInputEmail
         key={i++}
         hiddenAdd={this.hiddenAdd}
-        resetManagerInputs={this.resetManagerInputs}
+        deleteManagerInputs={this.deleteEmail}
+        addManagerInputs={this.addEmail}
         oneInput={emails.length === 1}
         email={email}/>
     );
   }
 
-
-
-  resetManagerInputs(email){
+  deleteEmail(email){
     let newEmails = Object.assign([], this.state.emails);
     newEmails.splice(newEmails.indexOf(email),1);
+
+    this._resetManagerInputs(newEmails);
+  }
+
+  addEmail(){
+    let newEmails = Object.assign([], this.state.emails);
+
+    if(newEmails.length === 0){
+      newEmails.push("");
+      newEmails.push("");
+    }else{
+      newEmails.push("");
+    }
+
+    this._resetManagerInputs(newEmails);
+  }
+
+  _resetManagerInputs(newEmails){
     this.setState({emails: newEmails});
   }
+
 
   componentWillReceiveProps(nextProps){
     this.setState({emails: Object.assign([], nextProps.emails)});

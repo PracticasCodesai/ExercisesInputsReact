@@ -125,5 +125,20 @@ describe('<ManagerInputEmail />',function(){
     expect(input.last().node.value).toEqual(props.emails[1]);
   });
 
+  it("should add a <InputEmail/> when add button are clicked with 0 email", function () {
+    let props = {
+      emails: []
+    };
+    let wrapper = mount(<Form {...props}/>);
+
+    let button = wrapper.find('button').first();
+    button.simulate('click');
+
+    let input = wrapper.find(InputEmail);
+
+    expect(input.length).toEqual(2);
+  });
+
+
 
 });
