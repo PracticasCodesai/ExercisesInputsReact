@@ -45,16 +45,18 @@ export class Form extends React.Component {
   }
 
   addEmail(){
-    let newEmails = Object.assign([], this.state.emails);
+    if(this.state.emails.length < 5) {
+      let newEmails = Object.assign([], this.state.emails);
 
-    if(newEmails.length === 0){
-      newEmails.push("");
-      newEmails.push("");
-    }else{
-      newEmails.push("");
+      if (newEmails.length === 0) {
+        newEmails.push("");
+        newEmails.push("");
+      } else {
+        newEmails.push("");
+      }
+
+      this._resetManagerInputs(newEmails);
     }
-
-    this._resetManagerInputs(newEmails);
   }
 
   _resetManagerInputs(newEmails){

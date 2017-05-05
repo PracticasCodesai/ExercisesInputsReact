@@ -9,13 +9,13 @@ const InputEmail = ({email, addInput, removeInput, updateEmailState, hiddenButto
       value={email}
       onChange={updateEmailState}
     />
-    <button
+    <input type="button"
       className="btn"
-      onClick={addInput}>+</button>
+      onClick={addInput}  value="+"/>
 
-    <button
+    <input type="button"
       className={hiddenButtonRemove ? "btn hidden" : "btn"}
-      onClick={removeInput}>-</button>
+      onClick={removeInput} value="-"/>
   </div>);
   };
 

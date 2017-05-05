@@ -26,7 +26,7 @@ describe('<ManagerInputEmail />',function(){
   });
 
   it("should contains only addInput button when start without emails", function () {
-    let allButtons = wrapper.find("button");
+    let allButtons = wrapper.find('input').find({type: 'button'});
     expect(allButtons.find('.hidden').length).toEqual(1);
   });
 
@@ -100,13 +100,13 @@ describe('<ManagerInputEmail />',function(){
 
     let wrapper = mount(<Form {...props}/>);
 
-    let button = wrapper.find('button').last();
+    let button =wrapper.find('input').find({type: 'button'}).last();
     button.simulate('click');
 
     let input = wrapper.find('input').find({type: 'email'});
     expect(input.node.value).toEqual("");
 
-    let buttonHidden = wrapper.find("button").find(".hidden");
+    let buttonHidden = wrapper.find('input').find({type: 'button'}).find(".hidden");
     expect(buttonHidden.length).toEqual(0);
   });
 
@@ -116,7 +116,7 @@ describe('<ManagerInputEmail />',function(){
     };
     let wrapper = mount(<Form {...props}/>);
 
-    let button = wrapper.find('button').last();
+    let button = wrapper.find('input').find({type: 'button'}).last();
     button.simulate('click');
 
     let input = wrapper.find("input").find({type: "email"});
@@ -131,7 +131,7 @@ describe('<ManagerInputEmail />',function(){
     };
     let wrapper = mount(<Form {...props}/>);
 
-    let button = wrapper.find('button').first();
+    let button = wrapper.find('input').find({type: 'button'}).first();
     button.simulate('click');
 
     let input = wrapper.find(InputEmail);
@@ -139,6 +139,23 @@ describe('<ManagerInputEmail />',function(){
     expect(input.length).toEqual(2);
   });
 
+  it("should not add a <InputEmail/> when add button are clicked with 5 email", function () {
+    let props = {
+      emails: [
+        "1@gmail.com",
+        "2@gmail.com",
+        "3@gmail.com",
+        "4@gmail.com",
+        "5@gmail.com",]
+    };
+    let wrapper = mount(<Form {...props}/>);
 
+    let button = wrapper.find('input').find({type: 'button'}).first();
+    button.simulate('click');
+
+    let input = wrapper.find(InputEmail);
+
+    expect(input.length).toEqual(5);
+  });
 
 });
