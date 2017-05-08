@@ -102,7 +102,7 @@ Form.propTypes = {
 };
 
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     emails: state.emails
   };
