@@ -1,10 +1,15 @@
 import React from 'react';
-import {mount} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 import {Form} from '../../src/components/Form';
 import InputEmail from '../../src/components/InputEmail';
 
 function mountPropsEmail(emails){
   return mount(<Form emails={emails}/>)
+}
+
+function clickRemoveButton(wrapper) {
+  let buttons = wrapper.find('input').find({type: 'button'});
+  buttons.last().simulate('click');
 }
 
 describe('<ManagerInputEmail />',function(){
@@ -196,8 +201,7 @@ describe('<ManagerInputEmail />',function(){
     let email = "prueba@gmail.com";
     let wrapper = mountPropsEmail([email, "", email]);
 
-    let buttons = wrapper.find('input').find({type: 'button'});
-    buttons.last().simulate('click');
+    clickRemoveButton(wrapper);
 
     let inputs = wrapper.find("input").find({type: "email"});
     expect(inputs.first().node.value).toEqual(email);
