@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount, shallow} from 'enzyme';
-import {Form} from '../../src/components/Form';
+import Form from '../../src/components/Form';
 import InputEmail from '../../src/components/InputEmail';
 
 function mountPropsEmail(emails){

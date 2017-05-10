@@ -38,7 +38,5 @@ describe('Integration test', function () {
     let input = wrapper.find("input").find({value: email});
 
     expect(input.node.value).toEqual(email);
-
-
   });
 });
