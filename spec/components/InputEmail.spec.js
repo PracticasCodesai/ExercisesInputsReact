@@ -12,7 +12,7 @@ function clickRemoveButton(wrapper) {
   buttons.last().simulate('click');
 }
 
-describe('<ManagerInputEmail />',function(){
+describe('<InputEmail />',function(){
 
   it('should contains input submit', function () {
     let wrapper = mountPropsEmail([]);

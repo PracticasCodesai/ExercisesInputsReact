@@ -1,31 +1,61 @@
-import React, {PropTypes} from 'react';
+import React,{PropTypes} from 'react';
 
 
-const InputEmail = ({email, addInput, removeInput, updateEmail, hiddenButtonAdd, hiddenButtonRemove}) => {
-  return (<div>
-    <input
-      className="form-control"
-      type="email"
-      value={email}
-      onChange={updateEmail}
-    />
-    <input type="button"
-      className={hiddenButtonAdd ? "btn hidden" : "btn"}
-      onClick={addInput}  value="+"/>
+class InputEmail extends React.Component {
 
-    <input type="button"
-      className={hiddenButtonRemove ? "btn hidden" : "btn"}
-      onClick={removeInput} value="-"/>
-  </div>);
-  };
+  constructor(props, context) {
+    super(props, context);
+
+    this.removeInput = this.removeInput.bind(this);
+    this.updateEmail = this.updateEmail.bind(this);
+  }
+
+  removeInput() {
+    this.props.deleteManagerInputs(this.props.position);
+  }
+
+  updateEmail(){
+    return this.props.updateEmailState(this.props.position);
+  }
+
+  isHiddenButtonRemove(){
+    return this.props.email === "" && this.props.oneInput;
+  }
+
+  isHiddenButtonAdd(){
+    const LIMIT_MAX_EMAILS = 5;
+    return this.props.position === LIMIT_MAX_EMAILS-1;
+  }
+
+
+  render(){
+    return (<div>
+      <input
+        className="form-control"
+        type="email"
+        value={this.props.email}
+        onChange={this.updateEmail()}
+      />
+      <input type="button"
+             className={this.isHiddenButtonAdd() ? "btn hidden" : "btn"}
+             onClick={this.props.addManagerInputs}  value="+"/>
+
+      <input type="button"
+             className={this.isHiddenButtonRemove() ? "btn hidden" : "btn"}
+             onClick={this.removeInput} value="-"/>
+    </div>);
+  }
+
+
+}
 
 InputEmail.propTypes = {
-  email: PropTypes.string.isRequired,
-  addInput: PropTypes.func.isRequired,
-  removeInput: PropTypes.func.isRequired,
-  updateEmail: PropTypes.func.isRequired,
-  hiddenButtonRemove: PropTypes.bool.isRequired,
-  hiddenButtonAdd: PropTypes.bool.isRequired,
+  position: PropTypes.number.isRequired,
+  deleteManagerInputs: PropTypes.func.isRequired,
+  updateEmailState: PropTypes.func.isRequired,
+  addManagerInputs: PropTypes.func.isRequired,
+  oneInput: PropTypes.bool.isRequired,
+  email: PropTypes.string
 };
 
 export default InputEmail;

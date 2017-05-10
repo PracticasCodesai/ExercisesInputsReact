@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as FormAction from '../actions/FormAction';
 
-import ManagerInputEmail from './ManagerInputEmail';
+import InputEmail from './InputEmail';
 
 export class Form extends React.Component {
 
@@ -33,7 +33,7 @@ export class Form extends React.Component {
     let id = 0;
     let i = 0;
     return emails.map(email =>
-      <ManagerInputEmail
+      <InputEmail
         key={id++}
         position={i++}
         deleteManagerInputs={this.deleteEmail}
